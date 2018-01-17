@@ -7,8 +7,9 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
             string wastun = null;
+            string username = Environment.UserName;
 
-            Console.WriteLine("Wilkommen!");
+            Console.WriteLine($"Wilkommen {username}!");
             Console.WriteLine("Bitte wählen Sie eine Rechenart: (a)ddieren (s)ubstrahieren");
             wastun = Console.ReadLine();
 
@@ -21,6 +22,8 @@ namespace ConsoleApp2
                 int ergebnis = zahl1 + zahl2;
                 var fertig = $"{zahl1}+{zahl2}={ergebnis}";
                 Console.WriteLine(fertig);
+
+                Console.ReadKey();
             }
             else
 
