@@ -1,0 +1,35 @@
+C#{
+
+System.Threading.Thread.Sleep(5000); (System "sleeps" for 5sek)
+
+System.IO.File.WriteAllText(@"C:\Users\Public\TestFolder\WriteText.txt", text); (write in txt data)
+
+string text = System.IO.File.ReadAllText(@"C:\Users\Public\TestFolder\WriteText.txt"); (reads in txt data)
+
+if(key == "blyat") (checks if var key is blyat)
+
+Console.Clear(); (remamber to use () after clear)
+
+int zahl2 = Convert.ToInt32(Console.ReadLine()); (turns a input to int)
+
+Console.WriteLine($"Goodbye, {username}!"); (with the $ you can add variables to the output)
+
+string str = Path.GetRandomFileName();
+str = str.Replace(".", "");                (generates a random an convert to string)
+string strraw = Convert.ToString(str);
+
+
+
+}
+Github
+{
+(first find your github projekt data)
+
+git status (give you info about the changes you made)
+
+git add (file) (add the file to upload)
+
+git commit -m (what do you changed) (declare what you changed)
+
+git push (upload the code to github)
+}
