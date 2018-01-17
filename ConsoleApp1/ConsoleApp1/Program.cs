@@ -11,7 +11,7 @@ namespace ConsoleApp2
             string username = Environment.UserName;
 
             Console.WriteLine($"Wilkommen {username}!");
-            Console.WriteLine("Bitte wählen Sie eine Rechenart: (a)ddieren (s)ubstrahieren (m)ultiplizieren (d)ividieren");
+            Console.WriteLine("Bitte wählen Sie eine Rechenart: (a)ddieren (s)ubstrahieren");
             wastun = Console.ReadLine();
 
             if (wastun == "a")
