@@ -7,6 +7,7 @@ namespace ConsoleApp2
 
         static void Main(string[] args)
         {
+            string key = null;
             string isad = null;
             string wastun = null;
             string username = Environment.UserName;
@@ -16,7 +17,12 @@ namespace ConsoleApp2
 
             isad = Console.ReadLine();
             if (isad == "y")
-            {
+            Console.WriteLine("Bitte geben sie einen Aktivierungs-Key ein");
+            key = Console.ReadLine();
+            if (key == "123abc")
+            {    Console.Clear();
+
+            
                 Console.WriteLine("Bitte wählen Sie eine Rechenart: (a)ddieren (s)ubstrahieren (m)ultiplizieren (d)ividieren (q)uit");
                 wastun = Console.ReadLine();
 
@@ -29,8 +35,8 @@ namespace ConsoleApp2
                     int ergebnis = zahl1 + zahl2;
                     var fertig = $"{zahl1}+{zahl2}={ergebnis}";
                     Console.WriteLine(fertig);
-
                     Console.ReadKey();
+                    return;
                 }
                 if (wastun == "s")
 
@@ -43,6 +49,7 @@ namespace ConsoleApp2
                     var fertig2 = $"{zahl3}-{zahl4}={ergebnis1}";
                     Console.WriteLine(fertig2);
                     Console.ReadKey();
+                    return;
                 }
                 if (wastun == "m")
 
@@ -55,6 +62,7 @@ namespace ConsoleApp2
                     var fertig2 = $"{zahl3}*{zahl4}={ergebnis1}";
                     Console.WriteLine(fertig2);
                     Console.ReadKey();
+                    return;
                 }
                 if (wastun == "d")
                 {
@@ -66,6 +74,7 @@ namespace ConsoleApp2
                     var fertig2 = $"{zahl3}/{zahl4}={ergebnis1}";
                     Console.WriteLine(fertig2);
                     Console.ReadKey();
+                    return;
                 }
 
                 if (wastun == "q")
@@ -74,8 +83,15 @@ namespace ConsoleApp2
                     System.Threading.Thread.Sleep(2000);
                     return;
                 }
+
+                else
+                {
+
+                    Console.Clear();
+                }
             }
-            if (isad =="n")
+            if (isad == "n")
+                
             {
                 Console.WriteLine("Bitte wählen Sie eine Rechenart: (a)ddieren (s)ubstrahieren (q)uit");
                 wastun = Console.ReadLine();
@@ -89,8 +105,8 @@ namespace ConsoleApp2
                     int ergebnis = zahl1 + zahl2;
                     var fertig = $"{zahl1}+{zahl2}={ergebnis}";
                     Console.WriteLine(fertig);
-
                     Console.ReadKey();
+                    return;
                 }
                 if (wastun == "s")
 
@@ -103,12 +119,13 @@ namespace ConsoleApp2
                     var fertig2 = $"{zahl3}-{zahl4}={ergebnis1}";
                     Console.WriteLine(fertig2);
                     Console.ReadKey();
+                    return;
                 }
                 
                 }
 
                 if (wastun == "q")
-            {   Console.WriteLine($"Wilkommen {username}!");
+            {   Console.WriteLine($"Goodbye, {username}!");
                 System.Threading.Thread.Sleep(2000);
                 return;
             }
@@ -116,8 +133,10 @@ namespace ConsoleApp2
             else
                 {
                     Console.WriteLine("Dies ist keine gültige Eingabe");
-                    Console.ReadKey();
-                }
+                Console.WriteLine($"Goodbye, {username}!");
+                System.Threading.Thread.Sleep(2000);
+                return;
+            }
             }
         }
     }
