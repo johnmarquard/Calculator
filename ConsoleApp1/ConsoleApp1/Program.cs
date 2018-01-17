@@ -17,7 +17,6 @@ namespace ConsoleApp2
             isad = Console.ReadLine();
             if (isad == "y")
             {
-
                 Console.WriteLine("Bitte wählen Sie eine Rechenart: (a)ddieren (s)ubstrahieren (m)ultiplizieren (d)ividieren (q)uit");
                 wastun = Console.ReadLine();
 
@@ -71,6 +70,8 @@ namespace ConsoleApp2
 
                 if (wastun == "q")
                 {
+                    Console.WriteLine($"Goodbye,{username}!");
+                    System.Threading.Thread.Sleep(2000);
                     return;
                 }
             }
@@ -107,8 +108,12 @@ namespace ConsoleApp2
                 }
 
                 if (wastun == "q")
-                { return; }
-                else
+            {   Console.WriteLine($"Wilkommen {username}!");
+                System.Threading.Thread.Sleep(2000);
+                return;
+            }
+
+            else
                 {
                     Console.WriteLine("Dies ist keine gültige Eingabe");
                     Console.ReadKey();
@@ -116,5 +121,3 @@ namespace ConsoleApp2
             }
         }
     }
-
-
