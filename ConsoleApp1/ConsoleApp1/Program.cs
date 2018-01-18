@@ -7,30 +7,32 @@ namespace ConsoleApp2
 
         static void Main(string[] args)
         {
-
+            //Strings
                 string str = Path.GetRandomFileName();
                 str = str.Replace(".", "");
             string strraw = Convert.ToString(str);
-                string key = null;
+            string key = null;
             string isad = null;
             string wastun = null;
             string username = Environment.UserName;
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            string pathkey = $"C:/Users/{username}/Desktop/key.txt";
+            string pathkey = $"C:/Users/{username}/Desktop/key4calculator.txt";
+            Console.ForegroundColor = ConsoleColor.DarkGreen; 
             Console.WriteLine($"Wilkommen {username}!");
             Console.WriteLine("Sollen Addons Aktiviert werden y/n?");
+
+
             isad = Console.ReadLine();
             if (isad == "y")
             { 
                 System.IO.File.WriteAllText(pathkey, str);
-            Console.WriteLine("Bitte geben sie einen Aktivierungs-Key ein");
+            Console.WriteLine("Bitte geben sie den Aktivierungs-Key ein");
             key = Console.ReadLine();
                 if (key == strraw)
                 {
                     Console.Clear();
 
 
-                    Console.WriteLine("Bitte wählen Sie eine Rechenart: (a)ddieren (s)ubstrahieren (m)ultiplizieren (d)ividieren (q)uit");
+                    Console.WriteLine("Bitte wählen Sie aus was sie machen möchten: (a)ddieren (s)ubstrahieren (m)ultiplizieren (d)ividieren (i)nfo (q)uit");
                     wastun = Console.ReadLine();
 
                     if (wastun == "a")
@@ -82,6 +84,13 @@ namespace ConsoleApp2
                         Console.WriteLine(fertig2);
                         Console.ReadKey();
                         return;
+                    }
+                    if (wastun == "i")
+                    {
+                        Console.WriteLine("Dieser Taschenrechner kann Rechnen");
+                        System.Threading.Thread.Sleep(2000);
+                        return;
+
                     }
 
                     if (wastun == "q")
