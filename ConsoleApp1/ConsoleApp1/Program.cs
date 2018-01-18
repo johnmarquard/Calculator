@@ -3,98 +3,72 @@ namespace ConsoleApp2
 {
     class Program
     {
+        static Communicator communicator = new Communicator();
+        static Calculator calculator = new Calculator();
+        static Connector connector = new Connector();
 
         static void Main(string[] args)
         {
             //Strings
             string wastun = null;
             string username = Environment.UserName;
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wilkommen {username}!");
+            communicator.Tell($"Willkommen { username}!",false);
             int unendlich = 0;
             while (unendlich == 0)
             {
-                Console.Clear();
-                Console.WriteLine("Bitte wählen Sie aus was sie machen möchten: (a)ddieren (s)ubstrahieren (m)ultiplizieren (d)ividieren (q)uit");
-                wastun = Console.ReadLine();
+                wastun = communicator.Ask("Bitte wählen Sie aus was sie machen möchten: (a)ddieren (s)ubstrahieren (m)ultiplizieren (d)ividieren (q)uit");
                 if (wastun != "a" && wastun != "s" && wastun != "m" && wastun != "d" && wastun != "q")
                 {
-                    Console.WriteLine("Dies ist keine Gültige Eingabe");
+                    communicator.Tell("Dies ist keine Gültige Eingabe",false);
                     System.Threading.Thread.Sleep(500);
                     continue;
                 }
                 if (wastun == "q")
                 {
-                    Console.WriteLine($"Goodbye,{username}!");
+                    communicator.Tell($"Goodbye {username}!",false);
                     System.Threading.Thread.Sleep(2000);
                     return;
                 }
-                int zahl1 = Zahl1Eingeben();
-                int zahl2 = Zahl2Eingeben();
+                int zahl1 = communicator.AskForNumber("Bitte geben Sie die erste Zahl ein:");
+                int zahl2 = communicator.AskForNumber("Bitte geben Sie die zweite zahl ein");
                 if (wastun == "a")
                 {
-                    FuehreAdditionAus(zahl1, zahl2);
+                    int ergebnis = calculator.Addition(zahl1, zahl2);
+                    string build = connector.Verbindungplus(ergebnis,zahl1,zahl2);
+                    communicator.Tell(build);
+
                 }
                 if (wastun == "s")
                 {
-                    FuerhreSubtracktionAus(zahl1, zahl2);
+                    int ergebnis = calculator.Subtraktion(zahl1, zahl2);
+                    string build = connector.Verbindungminus(ergebnis, zahl1, zahl2);
+                    communicator.Tell(build);
+
                 }
                 if (wastun == "m")
                 {
-                    FuerhreMultiAus(zahl1, zahl2);
+                    int ergebnis = calculator.Multiplikation(zahl1, zahl2);
+                    string build = connector.Verbindungmultiplikation(ergebnis, zahl1, zahl2);
+                    communicator.Tell(build);
+
                 }
                 if (wastun == "d")
                 {
-                    FuerhreDivisionAus(zahl1, zahl2);
+                    int ergebnis = calculator.Division(zahl1, zahl2);
+                    string build = connector.Verbindungdivision(ergebnis, zahl1, zahl2);
+                    communicator.Tell(build);
+
                 }
             }
             
 
         }
-        private static void FuehreAdditionAus(int zahl1,int zahl2)
-        {
-            int ergebnis = zahl1 + zahl2;
-            var fertig2 = $"{zahl1}+{zahl2}={ergebnis}";
-            Ausgabe(fertig2);
-        }
-        private static void FuerhreSubtracktionAus(int zahl1, int zahl2)
-        {
-            int ergebnis1 = zahl1 - zahl2;
-            var fertig2 = $"{zahl1}-{zahl2}={ergebnis1}";
-            Ausgabe(fertig2);
-        }
-        private static void FuerhreMultiAus(int zahl1, int zahl2)
-        {
-            int ergebnis1 = zahl1 * zahl2;
-            var fertig2 = $"{zahl1}*{zahl2}={ergebnis1}";
-            Ausgabe(fertig2);
-        }
-        private static void FuerhreDivisionAus(int zahl1, int zahl2)
-        {
-            int ergebnis1 = zahl1 / zahl2;
-            var fertig2 = $"{zahl1}/{zahl2}={ergebnis1}";
-            Ausgabe(fertig2);
-        }
-        private static int Zahl1Eingeben()
-        {
-            Console.WriteLine("Bitte geben Sie die erste Zahl ein:");
-            int zahl1 = Convert.ToInt32(Console.ReadLine());
-            return zahl1;
-        }
-        private static int Zahl2Eingeben()
-        {
-            Console.WriteLine("Bitte geben Sie die zweite Zahl ein:");
-            int zahl2 = Convert.ToInt32(Console.ReadLine());
-            return zahl2;
-        }
-        private static void Ausgabe(string fertig2)
-        {
-            Console.WriteLine(fertig2);
-            Console.ReadKey();
-        }
+        
     }
+        
 }
+
+
 
 
 
