@@ -1,9 +1,10 @@
 ﻿using System;
-namespace ConsoleApp2
+namespace Calculator.App
 {
     class Program
     {
-        static Communicator communicator = new Communicator();
+        static IWriter _writer = new ConsoleWriter();
+        static Communicator communicator = new Communicator(_writer);
         static Calculator calculator = new Calculator();
         static Connector connector = new Connector();
 
@@ -12,7 +13,7 @@ namespace ConsoleApp2
             //Strings
             string wastun = null;
             string username = Environment.UserName;
-            communicator.Tell($"Willkommen { username}!",false);
+            communicator.Tell($"Willkommen { username}!",false,true);
             int unendlich = 0;
             while (unendlich == 0)
             {

@@ -1,10 +1,13 @@
 ﻿using System;
-namespace ConsoleApp2
+namespace Calculator.App
 {
-    class Communicator
+    public class Communicator
     {
-        public Communicator()
+        IWriter _writer;
+        public Communicator(IWriter writer)
         {
+            _writer = writer;
+
             Console.ForegroundColor = ConsoleColor.Red;
         }
 
@@ -15,8 +18,8 @@ namespace ConsoleApp2
 
         public void Tell(string message, bool waitForInput)
         {
-            Console.WriteLine(message);
-            if (waitForInput)
+         _writer.WriteLine(message);
+        if (waitForInput)
             {
                 Console.ReadLine();
             }
@@ -24,7 +27,7 @@ namespace ConsoleApp2
 
         public void Tell(string message, bool waitForInput, bool waitForTime)
         {
-            Console.WriteLine(message);
+            _writer.WriteLine(message);
             if (waitForInput)
             {
                 Console.ReadLine();
@@ -39,7 +42,7 @@ namespace ConsoleApp2
 
         public string Ask(string question)
         {
-            Console.WriteLine(question);
+            _writer.WriteLine(question);
             string answer = Console.ReadLine();
             return answer;
         }

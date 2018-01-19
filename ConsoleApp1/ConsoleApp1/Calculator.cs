@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ConsoleApp2
+namespace Calculator.App
 {
-    class Calculator
+    public class Calculator
     {
 
         public int Addition(int zahl1,int zahl2)

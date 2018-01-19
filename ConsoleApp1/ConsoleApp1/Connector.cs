@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ConsoleApp2
+namespace Calculator.App
 {
-    class Connector
+    public class Connector
     {
         static Calculator calculator = new Calculator();
 
