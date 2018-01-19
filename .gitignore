@@ -1,0 +1,13 @@
+_ReSharper.Caches*
+.vs*
+*.ncrunchsolution.user
+**/bin
+**/obj
+.vs
+*.csproj.user
+build/tools
+^build/tools/packages.config
+
+.terraform
+*.tfstate
+*.tfstate.backup
