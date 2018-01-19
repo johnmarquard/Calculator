@@ -25,8 +25,8 @@ namespace Calculator.App
 
         public int Division(int zahl1,int zahl2)
         {
-            int ergebnis = zahl1 / zahl2;
-            return ergebnis;
+                int ergebnis = zahl1 / zahl2;
+                return ergebnis;
         }
     }
 }

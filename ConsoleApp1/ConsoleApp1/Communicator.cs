@@ -13,7 +13,7 @@ namespace Calculator.App
 
         public void Tell(string message)
         {
-            Tell(message, true);
+            Tell(message, false);
         }
 
         public void Tell(string message, bool waitForInput)

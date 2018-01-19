@@ -6,7 +6,7 @@ namespace Calculator.App
         static IWriter _writer = new ConsoleWriter();
         static Communicator communicator = new Communicator(_writer);
         static Calculator calculator = new Calculator();
-        static Connector connector = new Connector();
+        static Formater connector = new Formater();
 
         static void Main(string[] args)
         {
@@ -32,25 +32,36 @@ namespace Calculator.App
 
                 int zahl1 = communicator.AskForNumber("Bitte geben Sie die erste Zahl ein:");
                 int zahl2 = communicator.AskForNumber("Bitte geben Sie die zweite zahl ein");
-
+                int result = 0;
                 if (wastun == "a")
                 {
-                    communicator.Tell(connector.Verbindungplus(zahl1, zahl2));
+                    result = calculator.Addition(zahl1, zahl2);
+                    communicator.Tell(connector.Formatadd(zahl1, zahl2, result));
                 }
 
                 if (wastun == "s")
                 {
-                    communicator.Tell(connector.Verbindungminus(zahl1,zahl2));
+                    result = calculator.Subtraktion(zahl1, zahl2);
+                    communicator.Tell(connector.Formatremove(zahl1, zahl2, result));
                 }
 
                 if (wastun == "m")
                 {
-                    communicator.Tell(connector.Verbindungmultiplikation(zahl1, zahl2));
+                    result = calculator.Multiplikation(zahl1, zahl2);
+                    communicator.Tell(connector.Formatmultiplikation(zahl1, zahl2, result));
                 }
 
                 if (wastun == "d")
                 {
-                    communicator.Tell(connector.Verbindungdivision(zahl1,zahl2));
+                    try
+                    {
+                        result = calculator.Division(zahl1, zahl2);
+                        communicator.Tell(connector.Formatdivision(zahl1, zahl2, result));
+                    }
+                    catch (System.DivideByZeroException)
+                    {
+                        communicator.Tell("Es kann nicht durch 0 geteilt werden");
+                    }
                 }
             }
             
