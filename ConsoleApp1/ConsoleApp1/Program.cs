@@ -19,49 +19,40 @@ namespace ConsoleApp2
                 wastun = communicator.Ask("Bitte wählen Sie aus was sie machen möchten: (a)ddieren (s)ubstrahieren (m)ultiplizieren (d)ividieren (q)uit");
                 if (wastun != "a" && wastun != "s" && wastun != "m" && wastun != "d" && wastun != "q")
                 {
-                    communicator.Tell("Dies ist keine Gültige Eingabe",false);
-                    System.Threading.Thread.Sleep(500);
+                    communicator.Tell("Dies ist keine Gültige Eingabe",false,true);
                     continue;
                 }
+
                 if (wastun == "q")
                 {
-                    communicator.Tell($"Goodbye {username}!",false);
-                    System.Threading.Thread.Sleep(2000);
+                    communicator.Tell($"Goodbye {username}!",false,true);
                     return;
                 }
+
                 int zahl1 = communicator.AskForNumber("Bitte geben Sie die erste Zahl ein:");
                 int zahl2 = communicator.AskForNumber("Bitte geben Sie die zweite zahl ein");
+
                 if (wastun == "a")
                 {
-                    int ergebnis = calculator.Addition(zahl1, zahl2);
-                    string build = connector.Verbindungplus(ergebnis,zahl1,zahl2);
-                    communicator.Tell(build);
-
+                    communicator.Tell(connector.Verbindungplus(zahl1, zahl2));
                 }
+
                 if (wastun == "s")
                 {
-                    int ergebnis = calculator.Subtraktion(zahl1, zahl2);
-                    string build = connector.Verbindungminus(ergebnis, zahl1, zahl2);
-                    communicator.Tell(build);
-
+                    communicator.Tell(connector.Verbindungminus(zahl1,zahl2));
                 }
+
                 if (wastun == "m")
                 {
-                    int ergebnis = calculator.Multiplikation(zahl1, zahl2);
-                    string build = connector.Verbindungmultiplikation(ergebnis, zahl1, zahl2);
-                    communicator.Tell(build);
-
+                    communicator.Tell(connector.Verbindungmultiplikation(zahl1, zahl2));
                 }
+
                 if (wastun == "d")
                 {
-                    int ergebnis = calculator.Division(zahl1, zahl2);
-                    string build = connector.Verbindungdivision(ergebnis, zahl1, zahl2);
-                    communicator.Tell(build);
-
+                    communicator.Tell(connector.Verbindungdivision(zahl1,zahl2));
                 }
             }
             
-
         }
         
     }

@@ -10,17 +10,30 @@ namespace ConsoleApp2
 
         public void Tell(string message)
         {
-            Tell(message,true);
+            Tell(message, true);
         }
 
-        public void Tell(string message,bool waitForInput)
+        public void Tell(string message, bool waitForInput)
         {
             Console.WriteLine(message);
             if (waitForInput)
             {
                 Console.ReadLine();
             }
-            
+        }
+
+        public void Tell(string message, bool waitForInput, bool waitForTime)
+        {
+            Console.WriteLine(message);
+            if (waitForInput)
+            {
+                Console.ReadLine();
+            }
+            if (waitForTime)
+            {
+                System.Threading.Thread.Sleep(500);
+            }
+
 
         }
 
@@ -36,8 +49,6 @@ namespace ConsoleApp2
             int answer = Convert.ToInt32(Ask(question));
             return answer;
         }
-
-        
     }
         
 }
