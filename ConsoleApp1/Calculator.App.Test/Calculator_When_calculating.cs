@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Calculator.App.Test
 {
@@ -38,5 +39,16 @@ namespace Calculator.App.Test
             var expected = 2;
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void If_divide_by_zero_then_throw_exeption()
+        {
+            var actual = calculator.Division(10, 0);
+
+        }
+
+
+
     }
 }

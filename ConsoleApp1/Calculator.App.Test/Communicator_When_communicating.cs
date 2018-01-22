@@ -8,7 +8,7 @@ namespace Calculator.App.Test
     public class Communicator_When_communicating
     {
         [TestMethod]
-        public void Test_Method()
+        public void If_communicator_tell_Then_result_is_message()
         {
             var fake = Substitute.For<IWriter>();
             Communicator communicator = new Communicator(fake);

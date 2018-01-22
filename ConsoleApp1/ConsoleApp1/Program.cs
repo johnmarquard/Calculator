@@ -29,39 +29,49 @@ namespace Calculator.App
                     communicator.Tell($"Goodbye {username}!",false,true);
                     return;
                 }
-
-                int zahl1 = communicator.AskForNumber("Bitte geben Sie die erste Zahl ein:");
-                int zahl2 = communicator.AskForNumber("Bitte geben Sie die zweite zahl ein");
-                int result = 0;
-                if (wastun == "a")
+                try
                 {
-                    result = calculator.Addition(zahl1, zahl2);
-                    communicator.Tell(connector.Formatadd(zahl1, zahl2, result));
-                }
+                    int zahl1 = communicator.AskForNumber("Bitte geben Sie die erste Zahl ein:");
+                    int zahl2 = communicator.AskForNumber("Bitte geben Sie die zweite zahl ein");
 
-                if (wastun == "s")
-                {
-                    result = calculator.Subtraktion(zahl1, zahl2);
-                    communicator.Tell(connector.Formatremove(zahl1, zahl2, result));
-                }
 
-                if (wastun == "m")
-                {
-                    result = calculator.Multiplikation(zahl1, zahl2);
-                    communicator.Tell(connector.Formatmultiplikation(zahl1, zahl2, result));
-                }
+                    int result = 0;
 
-                if (wastun == "d")
-                {
-                    try
+                    if (wastun == "a")
                     {
-                        result = calculator.Division(zahl1, zahl2);
-                        communicator.Tell(connector.Formatdivision(zahl1, zahl2, result));
+                        result = calculator.Addition(zahl1, zahl2);
+                        communicator.Tell(connector.Formatadd(zahl1, zahl2, result));
                     }
-                    catch (System.DivideByZeroException)
+
+                    if (wastun == "s")
                     {
-                        communicator.Tell("Es kann nicht durch 0 geteilt werden");
+                        result = calculator.Subtraktion(zahl1, zahl2);
+                        communicator.Tell(connector.Formatremove(zahl1, zahl2, result));
                     }
+
+                    if (wastun == "m")
+                    {
+                        result = calculator.Multiplikation(zahl1, zahl2);
+                        communicator.Tell(connector.Formatmultiplikation(zahl1, zahl2, result));
+                    }
+
+                    if (wastun == "d")
+                    {
+                        try
+                        {
+                            result = calculator.Division(zahl1, zahl2);
+                            communicator.Tell(connector.Formatdivision(zahl1, zahl2, result));
+                        }
+                        catch (System.DivideByZeroException)
+                        {
+                            communicator.Tell("Es kann nicht durch 0 geteilt werden");
+                        }
+                    }
+                }
+                catch 
+                {
+                    communicator.Tell("Es kann nur mit Zahlen gerechnet werden");
+
                 }
             }
             

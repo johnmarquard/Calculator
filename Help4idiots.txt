@@ -34,4 +34,8 @@ git commit -m (what do you changed) (declare what you changed)
 git push (upload the code to github)
 }
 Powershell (to rapair idiot files)
-{}
+{
+Compress-Archive (-zip with console)
+
+
+}
