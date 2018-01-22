@@ -3,6 +3,7 @@ _ReSharper.Caches*
 *.ncrunchsolution.user
 **/bin
 **/obj
+**/packages
 .vs
 *.csproj.user
 build/tools
