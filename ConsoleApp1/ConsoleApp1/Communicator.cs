@@ -8,7 +8,7 @@ namespace Calculator.App
         {
             _writer = writer;
 
-            Console.ForegroundColor = ConsoleColor.Red;
+            //Console.ForegroundColor = ConsoleColor.Red;
         }
 
         public void Tell(string message)

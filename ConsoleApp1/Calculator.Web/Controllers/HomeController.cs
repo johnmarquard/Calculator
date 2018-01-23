@@ -33,20 +33,14 @@ namespace Calculator.Web.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public IActionResult Seven_pressed()
+        public IActionResult Seven()
         {
-            if (ModelState.IsValid)
-            {
+            
+            
+                ViewData["Message"] = "Its working ";
 
                 return View();
-            }
-            else
-            {
-                return View();
-            }
+            
         }
     }
 }
