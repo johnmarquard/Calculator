@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="UpdateTextBox.cs" />
     <Compile Include="Communicator.cs" />
     <Compile Include="ConsoleWriter.cs" />
     <Compile Include="Form1.cs">

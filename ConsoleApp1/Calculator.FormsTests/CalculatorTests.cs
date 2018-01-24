@@ -48,7 +48,15 @@ namespace Calculator.Forms.Tests
         public void If_Potenz_result_is_correct()
         {
             var actual = calculator.Potenz(5, 5);
-            var expected = 125;
+            var expected = 3125;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void If_Wurzel_result_is_correct()
+        {
+            var actual = calculator.Wurzel(9);
+            var expected = 3;
             Assert.AreEqual(expected, actual);
         }
     }

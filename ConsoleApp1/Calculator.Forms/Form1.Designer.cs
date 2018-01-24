@@ -46,6 +46,7 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.buttonPotenz = new System.Windows.Forms.Button();
+            this.buttonWurzel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TextBox1
@@ -230,11 +231,22 @@
             this.buttonPotenz.UseVisualStyleBackColor = true;
             this.buttonPotenz.Click += new System.EventHandler(this.Button_Potenz);
             // 
+            // buttonWurzel
+            // 
+            this.buttonWurzel.Location = new System.Drawing.Point(775, 447);
+            this.buttonWurzel.Name = "buttonWurzel";
+            this.buttonWurzel.Size = new System.Drawing.Size(75, 75);
+            this.buttonWurzel.TabIndex = 18;
+            this.buttonWurzel.Text = "√";
+            this.buttonWurzel.UseVisualStyleBackColor = true;
+            this.buttonWurzel.Click += new System.EventHandler(this.Button_wurzel);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 993);
+            this.Controls.Add(this.buttonWurzel);
             this.Controls.Add(this.buttonPotenz);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
@@ -280,6 +292,7 @@
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button buttonPotenz;
+        private System.Windows.Forms.Button buttonWurzel;
     }
 }
 

@@ -13,6 +13,7 @@ namespace Calculator.Forms
     public partial class Form1 : Form
     {
         static Calculator calculator = new Calculator();
+        static Formattext tb = new Formattext();
         string _zahl1 = string.Empty;
         string _zahl2 = string.Empty;
         string _operator = string.Empty;
@@ -34,19 +35,14 @@ namespace Calculator.Forms
             {
                 _zahl1 = $"{_zahl1}{number}";
             }
-            Update_textbox();
+            TextBox1.Text = tb.Textbox(_zahl1, _zahl2, _operator);
         }
 
         private void OperatorUpdate(string operator_, bool _isOperatorset)
         {
             _operator = operator_;
             _isOperatorSet = true;
-            Update_textbox();
-        }
-
-        private void Update_textbox()
-        {
-            TextBox1.Text = $"{_zahl1} {_operator} {_zahl2}";
+            TextBox1.Text = tb.Textbox(_zahl1, _zahl2, _operator);
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
@@ -108,6 +104,7 @@ namespace Calculator.Forms
         {
             try
             {
+
                 int zahl1 = Convert.ToInt32(_zahl1);
                 int zahl2 = Convert.ToInt32(_zahl2);
 
@@ -138,7 +135,12 @@ namespace Calculator.Forms
                     ergebnis = calculator.Division(zahl1, zahl2);
             }
 
-            TextBox1.Text = $"{_zahl1} {_operator} {_zahl2}  = {ergebnis}";
+            if (_operator == "√")
+                {
+                    _zahl2 = String.Empty;
+                    ergebnis = calculator.Wurzel(zahl1);
+                }
+                TextBox1.Text = tb.Textbox(_zahl1, _zahl2, _operator, ergebnis);
 
             }
 
@@ -186,7 +188,7 @@ namespace Calculator.Forms
             _zahl2 = string.Empty;
             _operator = string.Empty;
             _isOperatorSet = false;
-            Update_textbox();
+            TextBox1.Text = tb.Textbox(_zahl1, _zahl2, _operator);
         }
 
         private void Button_Potenz(object sender, EventArgs e)
@@ -194,6 +196,11 @@ namespace Calculator.Forms
             OperatorUpdate("^", false);
         }
 
-
+        private void Button_wurzel(object sender, EventArgs e)
+        {
+            _zahl2 = "0";
+            OperatorUpdate("√", false);
+            Button_doit(button10,null);
+        }
     }
 }
