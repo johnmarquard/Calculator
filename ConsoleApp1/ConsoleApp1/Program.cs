@@ -73,6 +73,7 @@ namespace Calculator.App
                     communicator.Tell("Es kann nur mit Zahlen gerechnet werden");
 
                 }
+
             }
             
         }
