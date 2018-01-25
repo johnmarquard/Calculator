@@ -3,16 +3,16 @@ namespace Calculator.Forms
 {
     public class FormatText
     {
-        public string Textbox(string _zahl1, string _zahl2, string _operator)
+        public string CreateCalculationText(string zahl1, string zahl2, string @operator)
         {
-            string Text = $"{_zahl1} {_operator} {_zahl2}";
+            string Text = $"{zahl1} {@operator} {zahl2}";
 
             return Text;
         }
 
-        public string Textboxr(string _zahl1, string _zahl2, string _operator, int ergebnis)
+        public string CreateEquationText(string zahl1, string zahl2, string @operator, int ergebnis)
         {
-            string Text = $"{_zahl1} {_operator} {_zahl2}  = {ergebnis}";
+            string Text = $"{zahl1} {@operator} {zahl2}  = {ergebnis}";
 
             return Text;
         }
