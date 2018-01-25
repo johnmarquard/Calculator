@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Calculator.Forms
 {
-    public class Formattext
+    public class FormatText
     {
         public string Textbox(string _zahl1, string _zahl2, string _operator)
         {
@@ -15,7 +10,7 @@ namespace Calculator.Forms
             return Text;
         }
 
-        public string Textbox(string _zahl1, string _zahl2, string _operator, int ergebnis)
+        public string Textboxr(string _zahl1, string _zahl2, string _operator, int ergebnis)
         {
             string Text = $"{_zahl1} {_operator} {_zahl2}  = {ergebnis}";
 

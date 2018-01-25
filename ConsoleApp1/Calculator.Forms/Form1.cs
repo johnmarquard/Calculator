@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calculator.Forms
@@ -13,7 +6,7 @@ namespace Calculator.Forms
     public partial class Form1 : Form
     {
         static Calculator calculator = new Calculator();
-        static Formattext tb = new Formattext();
+        static FormatText ft = new FormatText();
         string _zahl1 = string.Empty;
         string _zahl2 = string.Empty;
         string _operator = string.Empty;
@@ -31,18 +24,19 @@ namespace Calculator.Forms
             {
                 _zahl2 = $"{_zahl2}{number}";
             }
+
             else
             {
                 _zahl1 = $"{_zahl1}{number}";
             }
-            TextBox1.Text = tb.Textbox(_zahl1, _zahl2, _operator);
+            TextBox1.Text = ft.Textbox(_zahl1, _zahl2, _operator);
         }
 
         private void OperatorUpdate(string operator_, bool _isOperatorset)
         {
             _operator = operator_;
             _isOperatorSet = true;
-            TextBox1.Text = tb.Textbox(_zahl1, _zahl2, _operator);
+            TextBox1.Text = ft.Textbox(_zahl1, _zahl2, _operator);
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
@@ -105,49 +99,48 @@ namespace Calculator.Forms
             try
             {
 
-                int zahl1 = Convert.ToInt32(_zahl1);
-                int zahl2 = Convert.ToInt32(_zahl2);
+                    int zahl1 = Convert.ToInt32(_zahl1);
+                    int zahl2 = Convert.ToInt32(_zahl2);
 
-            int ergebnis = 0;
+                int ergebnis = 0;
 
-            if (_operator == "+")
-            {
-                ergebnis = calculator.Addition(zahl1, zahl2);
-            }
-
-            if (_operator == "-")
-            {
-                ergebnis = calculator.Subtraktion(zahl1, zahl2);
-            }
-
-            if (_operator == "*")
-            {
-                ergebnis = calculator.Multiplikation(zahl1, zahl2);
-            }
-
-            if (_operator == "^")
-                {   
-                ergebnis = calculator.Potenz(zahl1, zahl2);  
+                if (_operator == "+")
+                {
+                   ergebnis = calculator.Addition(zahl1, zahl2);
+                }
+    
+                if (_operator == "-")
+                {
+                    ergebnis = calculator.Subtraktion(zahl1, zahl2);
                 }
 
-            if (_operator == "/")
-            {
-                    ergebnis = calculator.Division(zahl1, zahl2);
-            }
+                if (_operator == "*")
+                {
+                    ergebnis = calculator.Multiplikation(zahl1, zahl2);
+                }
 
-            if (_operator == "√")
+                if (_operator == "^")
+                    {   
+                    ergebnis = calculator.Potenz(zahl1, zahl2);  
+                    }
+
+                if (_operator == "/")
+                {
+                    ergebnis = calculator.Division(zahl1, zahl2);
+                }
+
+                if (_operator == "√")
                 {
                     _zahl2 = String.Empty;
                     ergebnis = calculator.Wurzel(zahl1);
                 }
-                TextBox1.Text = tb.Textbox(_zahl1, _zahl2, _operator, ergebnis);
+                    TextBox1.Text = ft.Textboxr(_zahl1, _zahl2, _operator, ergebnis);
 
             }
 
             catch (OverflowException)
             {
-                TextBox1.Text = "The calculator doesnt support that huge numbers";
-                return;
+                TextBox1.Text = "INVALID INPUT";
             }
 
             catch (FormatException)
@@ -157,8 +150,7 @@ namespace Calculator.Forms
 
             catch (DivideByZeroException)
             {
-                TextBox1.Text = "You cannot divide by zero";
-                return;
+                TextBox1.Text = "Cannot divide by zero";
             }
         }
 
@@ -184,11 +176,11 @@ namespace Calculator.Forms
 
         private void Button_ec(object sender, EventArgs e)
         {
-            _zahl1 = string.Empty;
+            _zahl1 = string.Empty; 
             _zahl2 = string.Empty;
             _operator = string.Empty;
             _isOperatorSet = false;
-            TextBox1.Text = tb.Textbox(_zahl1, _zahl2, _operator);
+            TextBox1.Text = ft.Textbox(_zahl1, _zahl2, _operator);
         }
 
         private void Button_Potenz(object sender, EventArgs e)
